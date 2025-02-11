@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PontoEC - Login</title>
+</head>
+<body>
+
+    <?php 
+        session_start();
+        if (isset($_SESSION['usuario'])) {
+            echo "<h2>Bem-vindo, " . $_SESSION['usuario'] . "!</h2>";
+            echo "<form action='logout.php' method='post'>";
+            echo "<button type='submit'>Logoff</button>";
+            echo "</form>";
+        } else {
+    ?>
+
+    <h2>Login</h2>
+    <form action="pontoec.php" method="post">
+        <label for="usuario">Usuário:</label>
+        <input type="text" name="usuario" required><br><br>
+        <label for="senha">Senha:</label>
+        <input type="password" name="senha" required><br><br>
+        <button type="submit">Entrar</button>
+    </form>
+
+    <?php } ?>
+
+</body>
+</html>
