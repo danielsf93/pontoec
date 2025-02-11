@@ -53,7 +53,7 @@ try {
             <input type="password" name="nova_senha" placeholder="Senha" required>
             <button type="submit">Criar Usuário</button>
         </form>
-
+        <a href="listar_pontos.php">Listar Pontos</a>
         <h3>Lista de Usuários</h3>
         <table>
             <tr>

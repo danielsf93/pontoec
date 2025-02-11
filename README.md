@@ -30,3 +30,6 @@ CREATE TABLE pontos (
     data_hora DATETIME NOT NULL
 );
 
+
+ALTER TABLE pontos ADD COLUMN tipo ENUM('Entrada', 'Saída') NOT NULL;
+
