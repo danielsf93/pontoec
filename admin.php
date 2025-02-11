@@ -28,6 +28,7 @@ try {
         header("Location: admin.php");
         exit();
     }
+    $stmt = $pdo->prepare("UPDATE usuarios SET senha = :senha, recuperar_senha = 0 WHERE usuario = :usuario");
 
     // Excluir usuário
     if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['excluir_usuario'])) {
@@ -114,6 +115,32 @@ try {
     </table>
 
     <br>
+
+    <h3>Usuários que solicitaram recuperação de senha</h3>
+<table border="1">
+    <tr>
+        <th>Usuário</th>
+        <th>Ações</th>
+    </tr>
+    <?php
+    $stmt = $pdo->prepare("SELECT usuario FROM usuarios WHERE recuperar_senha = 1");
+    $stmt->execute();
+    $recuperacoes = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    foreach ($recuperacoes as $rec): ?>
+        <tr>
+            <td><?= htmlspecialchars($rec['usuario']) ?></td>
+            <td>
+                <form method="POST" style="display:inline;">
+                    <input type="hidden" name="mudar_senha_usuario" value="<?= htmlspecialchars($rec['usuario']) ?>">
+                    <input type="password" name="nova_senha_usuario" placeholder="Nova senha" required>
+                    <button type="submit">Redefinir Senha</button>
+                </form>
+            </td>
+        </tr>
+    <?php endforeach; ?>
+</table>
+<br>
     <a href="index.php">Voltar</a>
 </body>
 </html>
