@@ -18,14 +18,18 @@ try {
         $stmt->execute();
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
+       
+
         if ($user) {
-            $stmt = $pdo->prepare("UPDATE usuarios SET recuperar_senha = 1 WHERE usuario = :usuario");
+            $stmt = $pdo->prepare("UPDATE usuarios SET recuperar_senha = 1, data_solicitacao = NOW() WHERE usuario = :usuario");
             $stmt->bindParam(':usuario', $usuario);
             $stmt->execute();
+            
             echo "Solicitação enviada. Aguarde o administrador redefinir sua senha.";
         } else {
             echo "Usuário não encontrado.";
         }
+        
     }
 } catch (PDOException $e) {
     die("Erro na conexão com o banco de dados: " . $e->getMessage());
