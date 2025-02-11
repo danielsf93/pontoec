@@ -81,21 +81,7 @@ try {
       <button type="submit">Bater Ponto</button>
     </form>
 
-    <h3>Últimos Pontos Registrados</h3>
-    <table border="1">
-      <tr>
-        <th>Usuário</th>
-        <th>Data e Hora</th>
-        <th>Tipo</th>
-      </tr>
-      <?php foreach ($pontos as $ponto): ?>
-      <tr>
-        <td><?= htmlspecialchars($ponto['usuario']) ?></td>
-        <td><?= date("d/m/Y - H:i:s", strtotime($ponto['data_hora'])) ?></td>
-        <td><?= htmlspecialchars($ponto['tipo']) ?></td>
-      </tr>
-      <?php endforeach; ?>
-    </table>
+    
 
     <h3>Captura da Foto</h3>
     <!-- Elemento para exibir o vídeo da webcam (note o atributo muted para garantir autoplay) -->
