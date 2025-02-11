@@ -1,3 +1,5 @@
+http://localhost:8888/index.php
+
 mariadb -u admin -padmin
 
 CREATE DATABASE usuarios01;
@@ -32,4 +34,8 @@ CREATE TABLE pontos (
 
 
 ALTER TABLE pontos ADD COLUMN tipo ENUM('Entrada', 'Saída') NOT NULL;
+
+
+ALTER TABLE pontos ADD COLUMN foto VARCHAR(255) NULL;
+
 
