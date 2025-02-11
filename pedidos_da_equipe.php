@@ -74,7 +74,7 @@ try {
       border: 1px solid #ddd; 
       text-align: center; 
     }
-    th { background-color: #f4f4f4; }
+    th { background-color:rgb(221, 103, 103); }
   </style>
 </head>
 <body>

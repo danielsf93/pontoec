@@ -1,11 +1,13 @@
 <?php
 session_start();
+date_default_timezone_set('America/Sao_Paulo');
 
 $host = "localhost";
 $dbname = "usuarios01";
 $username = "admin";
 $password = "admin";
 
+// Conexão com o banco de dados e demais operações...
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -17,7 +19,7 @@ try {
 
     if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['tipo'], $_POST['foto'])) {
         $usuario = $_SESSION['usuario'];
-        $dataHora = date("Y-m-d H:i:s");
+        $dataHora = date("Y-m-d H:i:s");  // Agora esse date() usará o fuso 'America/Sao_Paulo'
         $tipo = $_POST['tipo'];
         $fotoBase64 = $_POST['foto'];
 
@@ -42,7 +44,8 @@ try {
         $stmt->bindParam(':foto', $fotoNome);
         $stmt->execute();
 
-        echo "<script>alert('Ponto registrado com sucesso!'); window.location.href='bater_ponto.php';</script>";
+        echo "<script>alert('Ponto registrado com sucesso!'); window.location.href='ver_meus_pontos.php';</script>";
+
         exit();
     }
 
@@ -55,6 +58,7 @@ try {
     die("Erro na conexão com o banco de dados: " . $e->getMessage());
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="pt">

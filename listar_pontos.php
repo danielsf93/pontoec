@@ -128,7 +128,9 @@ try {
             <button type="submit">Filtrar</button>
         </form>
         
-        <a href="pedidos_da_equipe.php">Pedidos de Alteração</a>
+        <a href="pedidos_da_equipe.php">Pedidos de Alteração</a><br>
+        <a href="gerar_relatorio.php">Gerar Relatório</a><br>
+        <a href="editar_manualmente.php">Editar Manualmente</a>
 
         <!-- Tabela com os registros -->
         <?php if (count($pontos) > 0): ?>
